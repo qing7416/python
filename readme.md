@@ -12,22 +12,22 @@
 	[extract] #抽取\传输（源端）  
 	[extract]  
 	os=windows		#windows,linux  
-	dbtype=Oracle	#mssql,oracle  
-	host=10.205.1.211 #抽取源端IP  
-	mgrport=7809  
-	db=SQL_219		#源数据库(mssql)ODBC连接名  
-	username=ggs  
-	password=Ggs0123  
+	dbtype=Oracle	#源数据库类型 mssql,oracle  
+	host=源库IP  
+	mgrport=端口号	#默认7809  
+	db=源数据库ODBC连接名称	#此处是mssql
+	username=源库用户名  
+	password=源库密码  
 
 	[replicat]#复制（目标端）  
 	[replicat]  
 	os=linux  
-	dbtype=oracle  
-	host=10.205.1.14  
-	mgrport=7809  
-	db=ORCL_14PDB1  
-	username=ggadmin  
-	password=Ggs0123#  
+	dbtype=oracle	#目标数据库类型  mssql,oracle    
+	host=目标库IP  
+	mgrport=端口号	#默认7809  
+	db==目标库TNS服务名 
+	username=目标库用户名  
+	password==目标库密码
 
 	[path]#生成配置的存放目录（可使用相对目录或者绝对目录）  
 	deploy_path=./ogg/deploy  
