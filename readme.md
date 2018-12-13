@@ -59,22 +59,22 @@
 
 
 5. 使用方法
-:: 1). 进入工作目录(假设是E:\defoggdemo)
+   1. 进入工作目录(假设是E:\defoggdemo)
 cd /D E:\defoggdemo
 
-:: 2). 修改配置文件（参考样本自行修改）
+   2. 修改配置文件（参考样本自行修改）
 	./conf/configdb.ini
 	./conf/configgroup.ini
 
-:: 3). 运行脚本，自动生成ogg全局参数
+   3. 运行脚本，自动生成ogg全局参数
 cd /D E:\defoggdemo
 .\defogg.py
 
-:: 4). 运行脚本，自动生成ogg进程组配置参数（每个进程组分别配置）
+   4. 运行脚本，自动生成ogg进程组配置参数（每个进程组分别配置）
 cd /D E:\defoggdemo
 .\defgroup.py
 
-:: 5). 检查上述目录文件
+   5. 检查上述目录文件
 dir .\ogg\deploy\
 dir .\ogg\dirprm_source\
 dir .\ogg\dirprm_target\
