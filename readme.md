@@ -10,12 +10,12 @@
     ogg部署自行进行，本项目仅自动生成ogg抽取、传输及复制步骤之配置文件（包括初始化配置）  
 
 2. 关于 configdb.ini文件配置，请参考配置样例阅读  
-[extract] #抽取\传输（源端）  
-[extract]  
-os=windows		#windows,linux  
-dbtype=Oracle	#mssql,oracle  
-host=10.205.1.211 #抽取源端IP  
-mgrport=7809  
+	[extract] #抽取\传输（源端）  
+	[extract]  
+	os=windows		#windows,linux  
+	dbtype=Oracle	#mssql,oracle  
+	host=10.205.1.211 #抽取源端IP  
+	mgrport=7809  
 	db=SQL_219		#源数据库(mssql)ODBC连接名  
 	username=ggs  
 	password=Ggs0123  
@@ -46,24 +46,24 @@ mgrport=7809
 
 4. 目录说明  
    1. 存放ogg简要实施步骤及命令文件的目录  
-	.\ogg\deploy  
+.\ogg\deploy  
 
    2. 需要放在ogg源端的配置文件  
-	.\ogg\dirprm_source  
+.\ogg\dirprm_source  
 
    3. 需要放在目标端端的配置文件  
-	.\ogg\dirprm_target  
+.\ogg\dirprm_target  
 
    4. 需要放在源端和目标端的表定义文件  
-	.\ogg\dirdef  
+.\ogg\dirdef  
 
 5. 使用方法  
    1. 进入工作目录(假设是E:\defoggdemo)  
 cd /D E:\defoggdemo  
 
    2. 修改配置文件（参考样本自行修改）  
-	./conf/configdb.ini  
-	./conf/configgroup.ini  
+./conf/configdb.ini  
+./conf/configgroup.ini  
 
    3. 运行脚本，自动生成ogg全局参数  
 cd /D E:\defoggdemo  
