@@ -5,11 +5,11 @@
 ### python3.6测试通过
 ### 2018-11-22
 
-一、ogg部署
+1.ogg部署
     默认在源端部署抽取和传输进程，在目标端部署复制应用进程
     ogg部署自行进行，本项目仅自动生成ogg抽取、传输及复制步骤之配置文件（包括初始化配置）
 
-二、关于 configdb.ini文件配置，请参考配置样例阅读
+2.关于 configdb.ini文件配置，请参考配置样例阅读
 	[extract] #抽取\传输（源端）
 	[extract]
 	os=windows		#windows,linux
@@ -36,7 +36,7 @@
 	dirprm_source=./ogg/dirprm_source
 	dirprm_target=./ogg/dirprm_target
 
-三 、关于 configogg.ini文件配置，请参考配置样例阅读
+3.关于 configogg.ini文件配置，请参考配置样例阅读
    [tablegroup]
 		trail:抽取序列，仅1位字母
 		trailname:非空英文字母数字，建议4位长度
@@ -44,7 +44,7 @@
 		table映射，格式:源schema.源表名=目标schema.目标表名
 
 
-四、目录说明
+4.目录说明
 1.存放ogg简要实施步骤及命令文件的目录
 	.\ogg\deploy
 
@@ -58,27 +58,27 @@
 	.\ogg\dirdef
 
 
-五、使用方法
-:: 1.进入工作目录(假设是E:\defoggdemo)
+5.使用方法
+:: 1).进入工作目录(假设是E:\defoggdemo)
 cd /D E:\defoggdemo
 
-:: 2.修改配置文件（参考样本自行修改）
+:: 2).修改配置文件（参考样本自行修改）
 	./conf/configdb.ini
 	./conf/configgroup.ini
 
-:: 3.运行脚本，自动生成ogg全局参数
+:: 3).运行脚本，自动生成ogg全局参数
 cd /D E:\defoggdemo
 .\defogg.py
 
-:: 4.运行脚本，自动生成ogg进程组配置参数（每个进程组分别配置）
+:: 4).运行脚本，自动生成ogg进程组配置参数（每个进程组分别配置）
 cd /D E:\defoggdemo
 .\defgroup.py
 
-:: 5.检查上述目录文件
+:: 5).检查上述目录文件
 dir .\ogg\deploy\
 dir .\ogg\dirprm_source\
 dir .\ogg\dirprm_target\
 
-:: 6.根据实施步骤及命令文件部署ogg（样例）
+6.根据实施步骤及命令文件部署ogg（样例）
 .\ogg\deploy\deploy_or03.sql
 
