@@ -1,5 +1,5 @@
 
-### 自动生成ogg部署配置参数文件
+### 自动生成ogg部署配置文件
 ### 适用范围:mssql2oracle(源端SQLSERVER,目标端Oracle)
 ### 适合有一定ogg部署经验者使用
 ### python3.6测试通过
