@@ -64,7 +64,7 @@ cd /D E:\defoggdemo
 ./conf/configdb.ini  
 ./conf/configgroup.ini  
 
-   3. 运行脚本，自动生成ogg全局参数  
+   3. 运行脚本，自动生成ogg的global,mgr配置文件  
 cd /D E:\defoggdemo  
 .\defogg.py  
 
