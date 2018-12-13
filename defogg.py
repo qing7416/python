@@ -3,8 +3,8 @@
 # Automatically generate oracle goldengate configuration file
 # python3.6
 # 2018-11-24 22:51 生成ogg源端和目标端的global,mgr配置文件
-# Author：qin
-# QQ：45958462
+# Author:piao
+# E-mail:qingang@sina.com
 '''
 import os
 import logging
