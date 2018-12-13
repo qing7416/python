@@ -5,20 +5,20 @@
 ### python3.6测试通过
 ### 2018-11-22
 
-1. ogg部署
-    默认在源端部署抽取和传输进程，在目标端部署复制应用进程
-    ogg部署自行进行，本项目仅自动生成ogg抽取、传输及复制步骤之配置文件（包括初始化配置）
+1. ogg部署  
+    默认在源端部署抽取和传输进程，在目标端部署复制应用进程  
+    ogg部署自行进行，本项目仅自动生成ogg抽取、传输及复制步骤之配置文件（包括初始化配置）  
 
-2. 关于 configdb.ini文件配置，请参考配置样例阅读
-[extract] #抽取\传输（源端）
-[extract]
-os=windows		#windows,linux
-dbtype=Oracle	#mssql,oracle
-host=10.205.1.211 #抽取源端IP
-mgrport=7809
-	db=SQL_219		#源数据库(mssql)ODBC连接名
-	username=ggs
-	password=Ggs0123
+2. 关于 configdb.ini文件配置，请参考配置样例阅读  
+[extract] #抽取\传输（源端）  
+[extract]  
+os=windows		#windows,linux  
+dbtype=Oracle	#mssql,oracle  
+host=10.205.1.211 #抽取源端IP  
+mgrport=7809  
+	db=SQL_219		#源数据库(mssql)ODBC连接名  
+	username=ggs  
+	password=Ggs0123  
 
 	[replicat]#复制（目标端）
 	[replicat]
