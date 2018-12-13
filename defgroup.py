@@ -8,8 +8,8 @@
 # 2018-11-21 11:47 自动创建目录，按trail备份配置
 # ogg文件形如:ed000*,rd000*
 # ogg进程形如:einit_ed,rinit_ed,ems_or04,pms_or04,rms_or04
-# Author：qin
-# QQ：45958462
+# Author:piao
+# E-mail:qingang@sina.com
 '''
 import os
 import logging
