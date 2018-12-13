@@ -15,7 +15,7 @@
 	dbtype=Oracle	#源数据库类型 mssql,oracle  
 	host=源库IP  
 	mgrport=端口号	#默认7809  
-	db=源数据库ODBC连接名称	#此处是mssql
+	db=源数据库ODBC连接名称	#此处是mssql  
 	username=源库用户名  
 	password=源库密码  
 
@@ -25,7 +25,7 @@
 	dbtype=oracle	#目标数据库类型  mssql,oracle    
 	host=目标库IP  
 	mgrport=端口号	#默认7809  
-	db==目标库TNS服务名 
+	db==目标库TNS服务名  
 	username=目标库用户名  
 	password==目标库密码
 
