@@ -1,3 +1,4 @@
+!
 # 自动生成ogg部署配置参数文件
 # 适用范围:mssql2oracle(源端SQLSERVER,目标端Oracle)
 # 适合有一定ogg部署经验者使用
@@ -80,4 +81,4 @@ dir .\ogg\dirprm_target\
 
 :: 6.根据实施步骤及命令文件部署ogg（样例）
 .\ogg\deploy\deploy_or03.sql
-
+!
