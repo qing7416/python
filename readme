@@ -1,3 +1,3 @@
 python 练习
-2018-11-22 defogg:使用python，根据ogg部署需求自动生成ogg部署配置文件，能极大提高ogg配置效率，可用于部署生产环境（应用前根据需要检查修改）
-2018-11-30 kq:使用python处理excel（考勤数据）、并借助sqllite实现考勤统计
+2018-11-22 defogg:使用python根据ogg部署需求生成ogg配置文件，用于辅助部署ogg生产环境。
+2018-11-30 kq:使用python处理excel（某种格式的考勤打卡记录）、并借助sqllite实现考勤统计，python练习。
