@@ -8,7 +8,7 @@ import dbconn
 def read_excel():
     startTime=datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
     #1.打开文件
-    workbook = xlrd.open_workbook(r'F:\workspace\kq\data\员工刷卡记录表.xls')
+    workbook = xlrd.open_workbook(r'.\data\员工刷卡记录表.xls')
 
     #2.获取所有sheet 
     print (workbook.sheet_names()) 
