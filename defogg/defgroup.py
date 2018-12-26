@@ -1,4 +1,4 @@
-﻿# coding=utf-8
+# coding=utf-8
 '''
 # Automatically generate oracle goldengate configuration file
 # python3.6
@@ -6,6 +6,7 @@
 # 2018-10-19 16:44
 # 2018-11-08 12:20 生成“简要实施步骤及命令”文件
 # 2018-11-21 11:47 自动创建目录，按trail备份配置
+# 2018-12-26 15:48 优化replicat配置
 # ogg文件形如:ed000*,rd000*
 # ogg进程形如:einit_ed,rinit_ed,ems_or04,pms_or04,rms_or04
 # Author:piao
@@ -139,12 +140,11 @@ def main():
 	ems = ems + 'EXTTRAIL ./dirdat/' + trailpath + '/' + et + '\n'
 	ems = ems + '-- GETTRUNCATES' + '\n'
 	ems = ems + 'TRANLOGOPTIONS MANAGESECONDARYTRUNCATIONPOINT' + '\n'
-	#ems = ems + 'REPORTFILE ./dirrpt/' + ems_name + '.rpt, APPEND, MEGABYTES 1024' + '\n'
-	ems = ems + 'REPORT AT 01:00' + '\n'
-	ems = ems + 'REPORTROLLOVER AT 02:00' + '\n'
+	ems = ems + 'REPORT AT 08:00' + '\n'
 	ems = ems + 'REPORTCOUNT EVERY 30 MINUTES, RATE' + '\n'
+	ems = ems + 'REPORTROLLOVER AT 20:00' + '\n'
 	ems = ems + 'DISCARDFILE ./dirrpt/' + ems_name + '.dsc, APPEND, MEGABYTES 1024' + '\n'
-	ems = ems + 'DISCARDROLLOVER AT 3:00' + '\n'
+	ems = ems + 'DISCARDROLLOVER AT 20:00' + '\n'
 	ems = ems + defgen_table + '\n'
 	print (ems);
 
@@ -158,11 +158,11 @@ def main():
 	pms = pms + 'PASSTHRU' + '\n'
 	pms = pms + 'RMTHOST ' + tgt_host + ', MGRPORT ' + tgt_port + ', COMPRESS' + '\n'
 	pms = pms + 'RMTTRAIL ./dirdat/' + trailpath + '/' + rt + '\n'
-	pms = pms + 'REPORT AT 01:00' + '\n'
-	pms = pms + 'REPORTROLLOVER AT 02:00' + '\n'
+	pms = pms + 'REPORT AT 08:00' + '\n'
 	pms = pms + 'REPORTCOUNT EVERY 30 MINUTES, RATE' + '\n'
+	pms = pms + 'REPORTROLLOVER AT 20:00' + '\n'
 	pms = pms + 'DISCARDFILE ./dirrpt/' + pms_name + '.dsc, APPEND, MEGABYTES 1024' + '\n'
-	pms = pms + 'DISCARDROLLOVER AT 3:00' + '\n'
+	pms = pms + 'DISCARDROLLOVER AT 20:00' + '\n'
 	pms = pms + defgen_table + '\n'
 	print (pms);
 
@@ -178,13 +178,14 @@ def main():
 	rms = rms + 'SETENV (ORACLE_HOME="/u01/app/oracle/product/12.2.0/dbhome_1/")' + '\n'
 	rms = rms + 'USERID ' + tgt_user + '@' + tgt_db + ', PASSWORD ' + tgt_pwd + '\n'
 	rms = rms + 'SOURCEDEFS ./dirdef/' + dirdef_file + '\n'
-	#rms = rms + 'REPORTFILE ./dirrpt/' + rms_name + '.rpt, APPEND, MEGABYTES 1024' + '\n'
-	rms = rms + 'REPORTAT AT 01:00' + '\n'
-	rms = rms + 'REPORTROLLOVERAT 02:00' + '\n'
+	rms = rms + 'REPORT AT 08:00' + '\n'
 	rms = rms + 'REPORTCOUNT EVERY 30 MINUTES, RATE' + '\n'
+	rms = rms + 'REPORTROLLOVER AT 20:00' + '\n'
+	rms = rms + '-- HANDLECOLLISIONS' + '\n'
+	rms = rms + 'REPERROR DEFAULT, ABEND' + '\n'
+	rms = rms + 'REPERROR -1, IGNORE' + '\n'
 	rms = rms + 'DISCARDFILE ./dirrpt/' + rms_name + '.dsc, APPEND, MEGABYTES 1024' + '\n'
-	rms = rms + 'DISCARDROLLOVER AT 3:00' + '\n'
-	rms = rms + 'REPERROR DEFAULT, DISCARD' + '\n'
+	rms = rms + 'DISCARDROLLOVER AT 20:00' + '\n'
 	rms = rms + map_table + '\n'
 	print (rms);
 
