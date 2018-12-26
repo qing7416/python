@@ -223,7 +223,16 @@ def main():
 
 
 	install = install + '\n'
-	install = install + '-- 三、初始化抽取(选择1个方案即可)' + '\n'
+	install = install + '-- 三、添加抽取事务表' + '\n'
+	install = install + '-- 1.源端登录 cmd\shell>' + '\n'
+	install = install + 'DBLOGIN SOURCEDB ' + src_db + ', USERID ' + src_user + ', PASSWORD ' + src_pwd + '\n' + '\n'
+
+	install = install + '-- 2.添加抽取事务表 ggsci>' + '\n'
+	install = install + trandata_table + '\n'
+
+	
+	install = install + '\n'
+	install = install + '-- 四、初始化抽取(选择1个方案即可)' + '\n'
 	install = install + '-- 初始化目标表(选用)' + '\n'
 	install = install + '/*' + '\n'
 	install = install + truncate_table
@@ -255,14 +264,11 @@ def main():
 
 
 	install = install + '\n'
-	install = install + '-- 四、配置同步抽取' + '\n'
+	install = install + '-- 五、配置同步抽取' + '\n'
 	install = install + '-- 1.源端登录 cmd\shell>' + '\n'
 	install = install + 'DBLOGIN SOURCEDB ' + src_db + ', USERID ' + src_user + ', PASSWORD ' + src_pwd + '\n' + '\n'
-
-	install = install + '-- 2.添加抽取事务表 ggsci>' + '\n'
-	install = install + trandata_table + '\n'
-
-	install = install + '-- 3.添加抽取和传输进程 ggsci>' + '\n'
+	
+	install = install + '-- 2.添加抽取和传输进程 ggsci>' + '\n'
 	install = install + 'ADD EXTRACT ' + ems_name + ', tranlog, BEGIN NOW' + '\n'
 	install = install + 'ADD EXTTRAIL ./dirdat/' + trailpath + '/' + et + ', EXTRACT ' + ems_name + ', MEGABYTES 128' + '\n' + '\n'
 
@@ -272,12 +278,12 @@ def main():
 	install = install + '-- 4.目标端登录 cmd\shell>' + '\n'
 	install = install + 'DBLOGIN USERID ' + tgt_user + '@' + tgt_db + ', PASSWORD ' + tgt_pwd + '\n' + '\n'
 
-	install = install + '-- 5.添加日志应用进程 ggsci>' + '\n'
+	install = install + '-- 4.添加日志应用进程 ggsci>' + '\n'
 	install = install + 'ADD REPLICAT ' + rms_name + ', EXTTRAIL ./dirdat/' + trailpath + '/' + rt + ', CHECKPOINTTABLE ggadmin.chkpt' + '\n' + '\n'
 
 
 	install = install + '\n'
-	install = install + '-- 五、启动同步进程' + '\n'
+	install = install + '-- 六、启动同步进程' + '\n'
 	install = install + '-- 1.源端启动抽取和传输进程 ggsci>' + '\n'
 	install = install + 'START EXTRACT ' + ems_name + '' + '\n'
 	install = install + 'START EXTRACT ' + pms_name + '' + '\n' + '\n'
