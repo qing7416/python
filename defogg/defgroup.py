@@ -6,7 +6,7 @@
 # 2018-10-19 16:44
 # 2018-11-08 12:20 生成“简要实施步骤及命令”文件
 # 2018-11-21 11:47 自动创建目录，按trail备份配置
-# 2018-12-26 15:48 优化replicat配置和一些实施步骤顺序
+# 2018-12-26 15:48 优化replicat配置
 # ogg文件形如:ed000*,rd000*
 # ogg进程形如:einit_ed,rinit_ed,ems_or04,pms_or04,rms_or04
 # Author:piao
@@ -139,6 +139,7 @@ def main():
 	ems = ems + 'SOURCEDB ' + src_db + ', USERID ' + src_user + ', PASSWORD ' + src_pwd + '\n'
 	ems = ems + 'EXTTRAIL ./dirdat/' + trailpath + '/' + et + '\n'
 	ems = ems + '-- GETTRUNCATES' + '\n'
+	ems = ems + '-- FETCHOPTIONS FETCHPKUPDATECOLS' + '\n'
 	ems = ems + 'TRANLOGOPTIONS MANAGESECONDARYTRUNCATIONPOINT' + '\n'
 	ems = ems + 'REPORT AT 08:00' + '\n'
 	ems = ems + 'REPORTCOUNT EVERY 30 MINUTES, RATE' + '\n'
@@ -275,7 +276,7 @@ def main():
 	install = install + 'ADD EXTRACT ' + pms_name + ', EXTTRAILSOURCE ./dirdat/' + trailpath + '/' + et + ', BEGIN NOW' + '\n'
 	install = install + 'ADD RMTTRAIL ./dirdat/' + trailpath + '/' + rt + ', EXTRACT ' + pms_name + ', MEGABYTES 128' + '\n' + '\n'
 
-	install = install + '-- 4.目标端登录 cmd\shell>' + '\n'
+	install = install + '-- 3.目标端登录 cmd\shell>' + '\n'
 	install = install + 'DBLOGIN USERID ' + tgt_user + '@' + tgt_db + ', PASSWORD ' + tgt_pwd + '\n' + '\n'
 
 	install = install + '-- 4.添加日志应用进程 ggsci>' + '\n'
