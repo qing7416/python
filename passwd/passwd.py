@@ -1,7 +1,9 @@
 #!/usr/bin/python
 ###################################################################################################################################
 ## Author             : whf307
-## Created            : 2018-01-09
+## Create             : 2018-01-09
+## Author             : qing7416
+## Modify             : 2019-01-10 使用eval支持python3
 ## Mail               : whf307@gmail.com
 ## Website            : https://whf307.github.io
 ## Platform           : Linux
