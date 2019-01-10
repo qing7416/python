@@ -1,3 +1,4 @@
 python 练习
 2018-11-22 defogg:使用python根据ogg部署需求生成ogg配置文件，用于辅助部署ogg生产环境。
 2018-11-30 kq:使用python处理excel（某种格式的考勤打卡记录）、并借助sqllite实现考勤统计，python练习。
+2019-01-10 使用python自动生成强密码。
