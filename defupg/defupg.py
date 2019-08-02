@@ -17,6 +17,11 @@ def main():
 		os.mkdir('./log');
 	except:
 		None;
+	try:
+		os.curdir
+		os.mkdir('./start');
+	except:
+		None;
 	fh = logging.FileHandler("./log/config.log", mode='a');
 	fh.setLevel(logging.DEBUG);	
 	formatter = logging.Formatter('%(asctime)s-%(levelname)s-%(message)s');
