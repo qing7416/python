@@ -68,7 +68,7 @@ def main():
 		#print(filecontent)		
 		#--按服务器导出命令文件
 		filename=srvcode + '.bat'
-		exportfile.ExportFile('F:\workspace\defupg\start', filename, filecontent)
+		exportfile.ExportFile('.\start', filename, filecontent)
 
 		#--按服务器生成start执行命令
 		startfile = startfile + (':%s \n' %(srvcode))
@@ -77,7 +77,7 @@ def main():
 		startfile = startfile + ('start %s > .\log\%s.log\n\n' %(filename,srvcode))
 
 	#三.导出start命令文件
-	exportfile.ExportFile('F:\workspace\defupg\start', 'start.bat', startfile)
+	exportfile.ExportFile('.\start', 'start.bat', startfile)
 
 
 	#
