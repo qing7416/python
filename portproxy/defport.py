@@ -1,4 +1,4 @@
-# coding=utf-8
+# coding = utf-8
 '''
 # Automatically generate port forward\proxy script file
 # 2020-02-14 09:00:00
@@ -22,7 +22,7 @@ def main():
 		os.mkdir('./start');
 	except:
 		None;
-	fh = logging.FileHandler("./log/config.log", mode='a');
+	fh = logging.FileHandler("./log/config.log", mode = 'a');
 	fh.setLevel(logging.DEBUG);	
 	formatter = logging.Formatter('%(asctime)s-%(levelname)s-%(message)s');
 	fh.setFormatter(formatter);
@@ -30,7 +30,7 @@ def main():
 
 	logger.info("开始配置...");
 	
-	startTime=datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+	startTime = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
 	print(startTime)
 
 	#一、GetConfig
@@ -40,7 +40,8 @@ def main():
 	
 	#print(sshserver)
 	#print(appserver)
-	#print(portproxy)
+	#print(portproxy)['ssh1']
+	
 	logger.info("read config");
 
 	#二、生成cmd脚本(按应用服务器\端口映射循环)
@@ -50,20 +51,29 @@ def main():
 	filecontentnetsh = '::netsh for windows' + '\r\n' + '::' + startTime
 	for x in appserver:
 		#print(x)
-		appserverip=list(x.keys())[0]
-		srvinfo=list(x.values())[0]
-		sshclientip=(srvinfo['sshclientip'])		
-		sshserveruser=(srvinfo['sshserveruser'])
-		sshserverip=(srvinfo['sshserverip'])
+		appserverip = list(x.keys())[0]
+		sshinfo = list(x.values())[0]
+
+		sshclientip = sshinfo['sshclientip']
+		sshservercode = sshinfo['sshservercode']
+		#print(sshservercode)
 		
-		#--端口映射（目标端口:源端口），如果没有配置，则监听与服务端口相同
-		s=sshserverip.split(':')
-		if len(s)==1:
-			sshserverip = s[0]
-			sshserverport = "22"
-		else:
-			sshserverip = s[0]
-			sshserverport = s[1]
+		#匹配sshserver信息
+		for x in sshserver:
+			#print(x)
+			if sshservercode == list(x.keys())[0]:
+				sshserverinfo = list(x.values())[0]
+				#print(sshserverinfo['sshserverinfo'])
+				sshserveruser = sshserverinfo['sshserveruser']
+				sshserverip = sshserverinfo['sshserverinfo']
+		
+				#--端口映射（目标端口:源端口），如果没有配置，则监听与服务端口相同
+				tmp = sshserverip.split(':')
+				sshserverip = tmp[0].strip()
+				if len(tmp) == 1:
+					sshserverport = "22"
+				else:
+					sshserverport = tmp[1].strip()
 
 		#print(appserverip)
 		#print('%s,%s,%s,%s,%s   ' %(appserverip,sshclientip,sshserveruser,sshserverip,sshserverport))
@@ -73,26 +83,25 @@ def main():
 			filecontentnetsh = filecontentnetsh + '\r\n' + '\r\n' + '::在 ' + sshclientip + ' 上运行'
 
 		#--查找该应用服务器的端口映射并生成脚本
-		ssh=''
-		netsh=''
+		ssh = ''
+		netsh = ''
 		for x in portproxy:
 			#print(x)
 			#print(list(x.keys())[0])
-			if appserverip==list(x.keys())[0]:
-				appserverPortMapList=list(x.values())[0]
+			if appserverip == list(x.keys())[0]:
+				appserverPortMapList = list(x.values())[0]
 				#print(appserverPortMapList) 
 				for x in appserverPortMapList:
-					appserverPortMap=x
+					appserverPortMap = x
 					#print('%s,%s,%s,%s,%s,%s   ' %(sshclientip,appserverip,appserverPortMap,sshserveruser,sshserverip,sshserverport))
 					
 					#--端口映射（目标端口:源端口），如果没有配置，则监听与服务端口相同
-					s=appserverPortMap.split(':')
-					if len(s)==1:
-						listenport = s[0]
-						appserverport = s[0]
+					tmp = appserverPortMap.split(':')
+					listenport = tmp[0].strip()
+					if len(tmp) == 1:
+						appserverport = tmp[0].strip()
 					else:
-						listenport = s[0]
-						appserverport = s[1]
+						appserverport = tmp[1].strip()
 					
 					#--生成bat命令
 					if sshserverport == "22":
@@ -124,7 +133,7 @@ def main():
 	exportfile.ExportFile('./start', 'netsh.bat', filecontentnetsh)
 	
 	#
-	endTime=datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+	endTime = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
 	print(endTime)
 	logger.info("配置成功完成!");
 
