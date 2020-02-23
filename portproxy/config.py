@@ -10,14 +10,16 @@ def GetConfigsshserver(logger):
 		o1 = config.options("sshserver")
 		sshserver = []
 		for x in o1:
-			infoitem=['sshserveruser','sshserverinfo']
-			info=config.get("sshserver", x).split(',')
+			sshservercode=[]
+			sshservercode.append(x)
 
-			srvcode=[]
-			srvcode.append(x)
+			sshitem=['sshserveruser','sshserverinfo']
+			sshinfo=config.get("sshserver", x).split(',')
+
 			sshserverinfo=[]
-			sshserverinfo.append(dict(zip(infoitem,info)))
-			sshserver.append(dict(zip(srvcode,sshserverinfo)))
+			sshserverinfo.append(dict(zip(sshitem,sshinfo)))
+
+			sshserver.append(dict(zip(sshservercode,sshserverinfo)))
 
 	except:
 		logger.error("读取配置文件出错!");
@@ -32,14 +34,16 @@ def GetConfigappserver(logger):
 		o1 = config.options("appserver")
 		appserver = []
 		for x in o1:
-			infoitem=['appserverip','portproxymaplist','sshservercode']
-			info=config.get("appserver", x).split(',')
+			connectinfo=[]
+			connectinfo.append(x)
 
-			srvcode=[]
-			srvcode.append(x)
-			sshservercode=[]
-			sshservercode.append(dict(zip(infoitem,info)))
-			appserver.append(dict(zip(srvcode,sshservercode)))
+			appitem=['appserverip','portproxymaplist','sshservercode']
+			appinfo=config.get("appserver", x).split(',')
+
+			serverinfo=[]
+			serverinfo.append(dict(zip(appitem,appinfo)))
+
+			appserver.append(dict(zip(connectinfo,serverinfo)))
 
 	except:
 		logger.error("读取配置文件出错!");
@@ -52,14 +56,16 @@ def GetConfigportproxy(logger):
 		config.read("./conf/config.ini")
 
 		o1 = config.options("portproxy")
+		#print(config.options("portproxy"))
 		portproxy = []
 		for x in o1:
-			srvcode=[]
-			srvcode.append(x)
-			srvdb=[]
-			srvdb.append(config.get("portproxy", x).split(','))
+			serverip=[]
+			serverip.append(x)
 
-			portproxy.append(dict(zip(srvcode,srvdb)))
+			portproxymaplist=[]
+			portproxymaplist.append(config.get("portproxy", x).split(','))
+
+			portproxy.append(dict(zip(serverip,portproxymaplist)))
 
 	except:
 		logger.error("读取配置文件出错!");

@@ -36,6 +36,7 @@ def main():
 	#一、GetConfig
 	(sshserver) = config.GetConfigsshserver(logger);
 	(appserver) = config.GetConfigappserver(logger);
+	(portproxy) = config.GetConfigportproxy(logger);
 
 	#print(sshserver)
 	#print(appserver)
@@ -129,7 +130,7 @@ def main():
 	#三.导出命令文件
 	filecontentssh = filecontentssh + '\r\n' + '\r\n'
 	filecontentnetsh = filecontentnetsh + '\r\n' + '\r\n'
-	print(filecontentssh)	
+	print(filecontentssh)
 	print(filecontentnetsh)
 		
 	exportfile.ExportFile('./start', 'ssh.bat', filecontentssh)
