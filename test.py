@@ -92,14 +92,13 @@ print(sys.path[0])
 
 
 #7、使用 eval 转整的时候数字前不能有 0
-eval("02")
+#--eval("02")
 
 
 #8、处理长的字符串
-("""多文本""")
+#--("""多文本""")
 
 
 #9、关于 requests 模块的编码问题
 #--自动识别网页编码的代码,在获取 res(请求的对象),获取源码之前使用 下面的代码即可获取正确的网站编码。
-
-res.encoding=res.apparent_encoding
+#--res.encoding=res.apparent_encoding
