@@ -137,7 +137,7 @@ def main():
 
 			#--生成端口检测列表
 			if sshclientip == '192.168.30.13':
-				filecontentipports = filecontentipports + '\n' + "192.168.0.147" + ' ' + listenport
+				filecontentipports = filecontentipports + '\n' + "172.35.117.16" + ' ' + listenport
 
 			#--端口防火墙分组
 			if prev_sshclientgroup != '' and prev_sshclientgroup != sshclientgroup:
@@ -145,24 +145,12 @@ def main():
 				s = prev_sshclientip + ':' + prev_sshclientgroup + ':' + listenip + ":" + ",".join(listenportgroup)
 				listengrouplist.append(s)
 
-				"""
-				tmp1 = ('netsh advfirewall firewall delete rule name = ".ENJOY_%s" dir = in ' % (prev_sshclientgroup))
-
-				tmp0 = ','.join(listenportgroup)
-				# print(tmp0)
-				tmp2 = (
-					'netsh advfirewall firewall add rule name=".ENJOY_%s" dir=in action=allow protocol=TCP localport=%s remoteip=%s' % (
-						prev_sshclientgroup, tmp0, listenip))
-
-				filecontentnetshfirewalld = filecontentnetshfirewalld + '\r\n' + tmp1
-				filecontentnetshfirewalld = filecontentnetshfirewalld + '\r\n' + tmp2
-				"""
 				prev_sshclientgroup = sshclientgroup
 				listenportgroup = []
 			#--添加端口列表
 			listenportgroup.append(listenport)
 
-	#三.生成防火墙配置命令
+	#三.生成防火墙配置命令，按分组写配置文件
 	#--末组端口防火墙（必须加！）
 	s = prev_sshclientip + ':' + prev_sshclientgroup + ':' + listenip + ":" + ",".join(listenportgroup)
 	listengrouplist.append(s)
@@ -194,6 +182,10 @@ def main():
 		prev_sshclientip = sshclientip
 		prev_sshclientgroup = sshclientgroup
 
+		#--写配置文件
+		(portproxy) = config.writeConf(sshclientip + ',' + sshclientgroup,listenportgroup,logger);
+
+
 	#四.导出命令文件
 	filecontentssh = filecontentssh + '\r\n' + '\r\n'
 	filecontentnetsh = filecontentnetsh + '\r\n' + '\r\n'
@@ -213,6 +205,7 @@ def main():
 	endTime = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
 	print(endTime)
 	logger.info("配置成功完成!");
+
 
 if __name__ == "__main__":
     main(); 

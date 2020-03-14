@@ -1,5 +1,6 @@
 # coding:utf-8
 import configparser
+import os
 import MyConfigParser
 
 def GetConfigsshserver(logger):
@@ -72,3 +73,14 @@ def GetConfigportproxy(logger):
 		raise Exception("");
 	return (portproxy);
 
+def writeConf(a,b,logger):
+	try:
+		config = configparser.ConfigParser()
+		config.read("./conf/config.ini")
+		config.set("portproxy", a, b)
+		with open('./conf/config.ini', "w") as f:
+			config.write(f)
+	except:
+		logger.error("读取配置文件出错!");
+		raise Exception("");
+	return ('Write finished!');
